@@ -1,13 +1,10 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {watcher} from "../../../model/watcher";
 import {useWatch} from "../../../util";
 
 let count = 0
 export const A = () => {
   useWatch([watcher])
-  useEffect(() => {
-    count = 0
-  }, [])
   count++
   return <div>
     <div style={{fontSize: 13}}>只要 watcher 的任意值發生變化就觸發</div>
