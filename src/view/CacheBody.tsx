@@ -19,7 +19,7 @@ export const CacheBody = () => {
   return <div>
     <h1>CacheBody</h1>
     <input ref={input} type="text" onKeyDown={ev => ev.key === 'Enter' && onChange()} defaultValue={name} placeholder={'更改 cacheBody.name 試試'}/>
-    <button onClick={onChange}>改名</button>
+    <button onClick={onChange}>改名 (Enter)</button>
     <hr/>
     <div>{name} (刷新頁面試試)</div>
   </div>
