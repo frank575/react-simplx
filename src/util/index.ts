@@ -35,7 +35,10 @@ export function createModel<T extends object>(data: T, memoryOption?: IMemoryOpt
   const _data = new Proxy(Object.assign(data, {__sub: [], __p: _prefix, __mk: _memoryKeys}), {
     set: (obj, prop, val) => {
       (data as any)[prop] = val
-      if (_data.__mk && (_data.__mk as any)[prop]) localStorage.setItem(`${_data.__p}__${prop as string}`, JSON.stringify(val))
+      if (_data.__mk && (_data.__mk as any)[prop]) {
+        const storageKey = `${_data.__p}__${prop as string}`;
+        val === undefined ? localStorage.removeItem(storageKey) : localStorage.setItem(storageKey, JSON.stringify(val))
+      }
       ;
       (_data.__sub as ISub[]).forEach(({keys, update}) => (!keys || (keys.length > 0 && keys.some(key => key === prop))) && update())
       return true
