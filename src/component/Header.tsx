@@ -10,6 +10,7 @@ export function Header() {
     <ul>
       <li><Link to={'/'}>CardList ({cardList.list.length})</Link></li>
       <li><Link to={'/cache-body'}>CacheBody</Link></li>
+      <li><Link to={'/watcher'}>Watcher</Link></li>
     </ul>
   </header>
 }
